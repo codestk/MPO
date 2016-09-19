@@ -51,9 +51,9 @@ namespace CoreDb
 
                     //Using not work with transaction
                     Com = GetCommandDb(sql);
-                
+
                     Adapter = GetAdapterDb(Com);
-                    
+
                     Adapter.Fill(ds);
                 }
                 finally
@@ -80,7 +80,7 @@ namespace CoreDb
                     SetParameter(parms, ref Com);
 
                     Adapter = GetAdapterDb(Com);
-                    
+
                     Adapter.Fill(ds);
                 }
 
@@ -99,16 +99,16 @@ namespace CoreDb
 
         public string FbExecuteScalar(String sql)
         {
-            
+
             string output;
 
             try
             {
                 OpenFbData();
-                
+
                 //Usirng detroy value of time out
                 Com = GetCommandDb(sql);
-               
+
                 output = Convert.ToString(Com.ExecuteScalar());
             }
             finally
@@ -134,7 +134,7 @@ namespace CoreDb
                 SetParameter(parms, ref Com);
 
 
-              
+
                 output = Com.ExecuteScalar().ToString();
             }
             finally
@@ -180,9 +180,9 @@ namespace CoreDb
                 OpenFbData();
 
                 Com = GetCommandDb(sql, commandType);
-                
+
                 SetParameter(parms, ref Com);
-                
+
                 affectRow = Com.ExecuteNonQuery();
             }
             finally
@@ -209,7 +209,7 @@ namespace CoreDb
                     {
                         SetParameter(t.Parameter, ref Com);
                     }
-                
+
                     rowAffect += Com.ExecuteNonQuery();
                 }
             }
@@ -236,12 +236,12 @@ namespace CoreDb
             CommandType commandType = CommandType.Text)
         {
             OpenFbData();
-            
+
             //Using not work with transaction
             Com = GetCommandDb(sql, commandType);
 
             SetParameter(parms, ref Com);
-            
+
             IDataReader fbrd = Com.ExecuteReader();
 
             return fbrd;
@@ -265,7 +265,7 @@ namespace CoreDb
         //    Snapshot	Reduces blocking by storing a version of data that one application can read while another is modifying the same data. Indicates that from one transaction you cannot see changes made in other transactions, even if you requery.
         //    Unspecified	A different isolation level than the one specified is being used, but the level cannot be determined.
         //When using OdbcTransaction, if you do not set IsolationLevel or you set IsolationLevel to Unspecified, the transaction executes according to the isolation level that is determined by the driver that is being used.
-        //        
+        //
         /// Chaos	The pending changes from more highly isolated transactions cannot be overwritten.
         /// <param name="isolevel"></param>
         public virtual void BeginTransaction(IsolationLevel isolevel)

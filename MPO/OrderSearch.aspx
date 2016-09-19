@@ -121,7 +121,6 @@
                     <%# GetCommonColumn.ConvertOrderStatus(Eval("STATUS"))%>
                 </ItemTemplate>
             </asp:TemplateField>
-      
         </Columns>
         <SelectedRowStyle CssClass="SelectedRowStyle" />
         <AlternatingRowStyle CssClass="AlternatingRowStyle" />
@@ -181,7 +180,7 @@
                         </td>
                     </tr>
                     <tr>
-                        <td colspan="100%" style="background-color: ##e6e6fa">
+                        <td colspan="100%" style="background-color: #e6e6fa">
                         </td>
                     </tr>
                 </ItemTemplate>
